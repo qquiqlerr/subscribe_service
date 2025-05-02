@@ -65,9 +65,7 @@ func main() {
 
 	// Wait for a termination signal
 	<-sigCh
-	appLogger.Info("gRPC server shutting down...")
 	gracefulShutdown(grpcServer, appLogger, appConfig.GracefulShutdownTimeout)
-	appLogger.Info("gRPC server stopped")
 }
 
 func gracefulShutdown(grpcServer *grpc.Server, log *zap.Logger, timeout time.Duration) {
